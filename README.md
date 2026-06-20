@@ -111,3 +111,4 @@ Charts, plots, graphs — all coming soon.
 - **Pandas** — for working with tables and datasets
 - **NumPy** — for numerical operations and arrays
 - **Jupyter Notebook** — for writing and running code interactively
+- **On Anaconda Navigator - jupyter notebook**
