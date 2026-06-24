@@ -9,12 +9,14 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 
 | File | Topic |
 |------|-------|
-| `Day1.ipynb` | Pandas Basics |
-| `Day2.ipynb` | Real Dataset + Data Cleaning |
-| `Day3__Handson_.ipynb` | Pandas Practice (Hands-on) |
-| `Day_4.ipynb` | NumPy Fundamentals |
-| `Day_5.ipynb` | NumPy Practice (Hands-on) |
-
+| `day_01_pandas.ipynb` | Pandas Basics |
+| `day_02_pandas.ipynb` | Real Dataset + Data Cleaning |
+| `day_03_handson_pandas.ipynb` | Pandas Practice (Hands-on) |
+| `day_04_numpy.ipynb` | NumPy Fundamentals |
+| `day_05_numpy_handson.ipynb` | NumPy Practice (Hands-on) |
+| `day_06_visualization.ipynb` | Data Visualization Theory (Matplotlib + Seaborn) |
+| `day_07_visualization_handson.ipynb` | Data Visualization Hands-on (Real Dataset) |
+| `day_08_Statistic_and_Probability.ipynb` | Statistics & Probability (Theory + Code) |
 ---
 
 ## - Day-by-Day Breakdown
@@ -111,6 +113,22 @@ Applied all visualization concepts on a real `cars.csv` dataset.
 - **Box Plot** — `cylinders vs hp` grouped by brand to compare distributions
 - **Heatmap** — used `df.select_dtypes([int, float])` + `.corr()` to build a correlation matrix, then visualized it with `sns.heatmap()`, `annot=True`, and different `cmap` options (`Set2`, `Blues`)
 - **3D Scatter Plot** — used `plotly.express` (`px.scatter_3d`) to plot `mpg`, `hp`, and `brand` in an interactive 3D chart
+
+---
+
+### Day 8 — Statistics & Probability
+Started with statistics theory and implemented everything in Python using `numpy` and `statistics` libraries.
+
+- **What is Statistics** — collecting, organizing, analyzing, interpreting, and presenting data
+- **Types of Stats** — Descriptive (summarize data) vs Inferential (draw conclusions/predictions)
+- **Measure of Central Tendency** — Mean, Median, Mode using both `np` and `stats` library; understood why `stats` returns int vs `np` returns float, and how `stats.mode()` vs `stats.multimode()` differ
+- **Population vs Sample** — sample is a subset of population; biased samples give biased results
+- **Types of Sampling** — Random (`random.sample()`), Systematic (every kth value using slicing), Stratified (split into groups then sample each)
+- **Measure of Dispersion** — Range (`np.ptp()`), Variance (`np.var()`), Standard Deviation (`np.std()`); understood why `numpy` and `statistics` give different answers — numpy uses population formula (n), stats uses sample formula (n-1)
+- **Percentile & Quartiles** — `np.percentile()` for any percentile; Q1/Q2/Q3 at 25/50/75
+- **Outliers** — detected using box plot; removed using IQR method (lower bound = Q1 - 1.5×IQR, upper bound = Q3 + 1.5×IQR)
+- **Correlation** — Positive, Negative, Zero; used iris dataset with `.corr()` + `sns.heatmap()` to visualize relationships
+- **Types of Data** — Qualitative (Nominal, Ordinal) vs Quantitative (Discrete, Continuous)
 
 ---
 
