@@ -17,6 +17,8 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_06_visualization.ipynb` | Data Visualization Theory (Matplotlib + Seaborn) |
 | `day_07_visualization_handson.ipynb` | Data Visualization Hands-on (Real Dataset) |
 | `day_08_Statistic_and_Probability.ipynb` | Statistics & Probability (Theory + Code) |
+| `day_09_Statistic_and_Probability.ipynb` | Probability — Theory + Hands-on (Real Dataset) |
+
 ---
 
 ## - Day-by-Day Breakdown
@@ -116,33 +118,32 @@ Applied all visualization concepts on a real `cars.csv` dataset.
 
 ---
 
-### Day 8 — Statistics & Probability
-Started with statistics theory and implemented everything in Python using `numpy` and `statistics` libraries.
+### Day 8 — Statistics & Probability (Theory + Code)
+Covered statistics from scratch — theory first, then implemented everything in Python using `numpy` and the `statistics` library.
 
-- **What is Statistics** — collecting, organizing, analyzing, interpreting, and presenting data
-- **Types of Stats** — Descriptive (summarize data) vs Inferential (draw conclusions/predictions)
-- **Measure of Central Tendency** — Mean, Median, Mode using both `np` and `stats` library; understood why `stats` returns int vs `np` returns float, and how `stats.mode()` vs `stats.multimode()` differ
-- **Population vs Sample** — sample is a subset of population; biased samples give biased results
-- **Types of Sampling** — Random (`random.sample()`), Systematic (every kth value using slicing), Stratified (split into groups then sample each)
-- **Measure of Dispersion** — Range (`np.ptp()`), Variance (`np.var()`), Standard Deviation (`np.std()`); understood why `numpy` and `statistics` give different answers — numpy uses population formula (n), stats uses sample formula (n-1)
-- **Percentile & Quartiles** — `np.percentile()` for any percentile; Q1/Q2/Q3 at 25/50/75
-- **Outliers** — detected using box plot; removed using IQR method (lower bound = Q1 - 1.5×IQR, upper bound = Q3 + 1.5×IQR)
-- **Correlation** — Positive, Negative, Zero; used iris dataset with `.corr()` + `sns.heatmap()` to visualize relationships
-- **Types of Data** — Qualitative (Nominal, Ordinal) vs Quantitative (Discrete, Continuous)
+- What statistics is — collecting, organizing, analyzing, interpreting, and presenting data
+- Types of Stats — Descriptive (summarize data) vs Inferential (draw conclusions/predictions)
+- Measure of Central Tendency — Mean, Median, Mode using both `np` and `stats` library; understood why `stats` returns int vs `np` returns float, and how `stats.mode()` vs `stats.multimode()` differ
+- Population vs Sample — sample is a subset of population; biased samples give biased results
+- Types of Sampling — Random (`random.sample()`), Systematic (every kth element via slicing), Stratified (split into groups, sample each)
+- Measure of Dispersion — Range (`np.ptp()`), Variance (`np.var()`), Standard Deviation (`np.std()`); understood why `numpy` and `statistics` give different answers — numpy uses population formula (÷n), stats uses sample formula (÷n-1)
+- Percentile & Quartiles — `np.percentile()` for any percentile; Q1/Q2/Q3 at 25/50/75
+- Outlier Detection — IQR method (Lower Bound = Q1 − 1.5×IQR, Upper Bound = Q3 + 1.5×IQR); visualized using box plot
+- Correlation — Positive, Negative, Zero; used iris dataset with `.corr()` + `sns.heatmap()` to visualize relationships
+- Types of Data — Qualitative (Nominal, Ordinal) vs Quantitative (Discrete, Continuous)
 
 ---
 
-## - How to Run
+### Day 9 — Probability (Theory + Hands-on)
+Covered probability concepts with theory and applied them on a real dataset using Pandas.
 
-1. Make sure you have Python installed
-2. Install the required libraries:
-   ```
-   pip install pandas numpy jupyter
-   ```
-3. Open any notebook:
-   ```
-   jupyter notebook Day1.ipynb
-   ```
+- What probability is — measure of how likely an event is to occur; P(A) = favourable outcomes / total outcomes
+- Key terms — Experiment (any process with an outcome), Event (specific group of outcomes), Outcome (result of a single trial)
+- Types of Events — Simple event (one specific outcome) vs Compound event (group of outcomes, e.g. getting an even number on a dice)
+- Marginal Probability — probability of a single event without considering others (e.g. P(red ball) = 5/8)
+- Joint Probability — probability of two or more events happening simultaneously (e.g. rolling 3 on two dice = 1/6 × 1/6 = 1/36)
+- Conditional Probability — probability of an event given another has already occurred (e.g. P(King | Face card) = 4/12)
+- Hands-on — used `Country.csv` and `tips` dataset; calculated marginal probability of a day being Sunday using `len()` filtering and `value_counts()`
 
 ---
 
@@ -155,4 +156,5 @@ Started with statistics theory and implemented everything in Python using `numpy
 - **Matplotlib** — for core plotting and charts
 - **Seaborn** — for advanced, cleaner visualizations built on Matplotlib
 - **Plotly** — for interactive 3D charts
+- **statistics** — (built-in) | For mean, median, mode, variance — sample-formula based calculations |
 - **On Anaconda Navigator - jupyter notebook**
