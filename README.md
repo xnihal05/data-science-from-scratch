@@ -18,6 +18,7 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_07_visualization_handson.ipynb` | Data Visualization Hands-on (Real Dataset) |
 | `day_08_Statistic_and_Probability.ipynb` | Statistics & Probability (Theory + Code) |
 | `day_09_Statistic_and_Probability.ipynb` | Probability — Theory + Hands-on (Real Dataset) |
+| `day_10_AirBnb_CaseStudy.ipynb` | Airbnb NYC — End-to-End Case Study |
 
 ---
 
@@ -144,6 +145,20 @@ Covered probability concepts with theory and applied them on a real dataset usin
 - Joint Probability — probability of two or more events happening simultaneously (e.g. rolling 3 on two dice = 1/6 × 1/6 = 1/36)
 - Conditional Probability — probability of an event given another has already occurred (e.g. P(King | Face card) = 4/12)
 - Hands-on — used `Country.csv` and `tips` dataset; calculated marginal probability of a day being Sunday using `len()` filtering and `value_counts()`
+
+---
+
+### Day 10 — Airbnb NYC Case Study (End-to-End EDA)
+Applied everything learned so far on a real Airbnb New York City dataset (~48,895 rows, 16 columns). Full EDA pipeline from loading to visualization.
+
+- Loaded `Airbnb_datanew.csv` using `pd.read_csv()` and explored shape, columns, and data types
+- Checked duplicates (none) and null values — found nulls in `listing_name`, `host_name`, `last_review`, and `reviews_per_month`
+- Handled nulls contextually — filled `listing_name` with `'Unknown'`, `host_name` with `'no_name'`, `reviews_per_month` with `0`; dropped `last_review` column entirely (date column, not needed for analysis)
+- Removed price outliers using IQR method — filtered out extreme pricing values before analysis
+- Used `value_counts()` to analyze distribution of `room_type` (Entire home/apt: 22,784 | Private room: 21,996 | Shared room: 1,138)
+- Visualized neighbourhood group distribution with `sns.countplot()`
+- Visualized room type distribution with `sns.countplot()`
+- Plotted `neighbourhood` vs `reviews_per_month` using `sns.barplot()` on a random 30-row sample with `plt.xticks(rotation=90)`
 
 ---
 
