@@ -23,6 +23,7 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_12_inferential_stats.ipynb` | Inferential Statistics — Sampling + Hypothesis Testing |
 | `day_13_inferential_stats.ipynb` | Inferential Statistics — T-Tests, ANOVA, Chi-Square |
 | `day_14_linear_algebra.ipynb` | Linear Algebra for ML — Vectors, Matrices, Tensors |
+| `day_15_handson_linear_algebra.ipynb` | Linear Algebra — Hands-on Practice |
 
 
 ---
@@ -218,6 +219,26 @@ Covered the math behind how ML models actually see and process data.
 - Determinant — `np.linalg.det()`; if zero → singular matrix → no inverse exists
 - Inverse — `np.linalg.inv()`; used in ML for finding weights (W); only exists when determinant ≠ 0
 - Eigen Vectors — vectors that don't change direction when multiplied by a matrix; Eigen Values = how much they scale
+
+---
+
+### Day 15 — Linear Algebra Hands-on Practice
+Practiced all Day 14 concepts with focused NumPy exercises and logical problems.
+
+- Created 3×3 matrix with random ints (1–100) and performed all scalar operations — add, subtract, divide, multiply
+- Created 4×4 matrix and iterated using nested loops to print odd numbers row by row
+- Calculated mean of each row using `.mean()` inside a loop
+- Created two 2×2 matrices and applied all matrix operations — `np.add()`, `np.subtract()`, element-wise `*`, dot product `@`, and division
+- Proved all 4 transpose properties using `np.array_equal()`:
+  - `(A')' = A` ✓
+  - `K × A' = (KA)'` ✓
+  - `(A+B)' = A' + B'` ✓
+  - `(AB)' = B'A'` ✓
+- Filtered even numbers less than 69 from each row of a 4×4 matrix using nested loop + conditions
+- Printed all values greater than the array mean from a 1D array of 10 random ints
+- Found maximum value in a 15-element array using a `while` loop (without `np.max()`)
+- Built a character frequency dictionary from a string using a loop — `{char: count}`
+- Calculated string length without any built-in function using a counter loop
 
 ---
 
