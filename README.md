@@ -24,6 +24,8 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_13_inferential_stats.ipynb` | Inferential Statistics — T-Tests, ANOVA, Chi-Square |
 | `day_14_linear_algebra.ipynb` | Linear Algebra for ML — Vectors, Matrices, Tensors |
 | `day_15_handson_linear_algebra.ipynb` | Linear Algebra — Hands-on Practice |
+| `day_16_ml_linear_regression.ipynb` | Introduction to ML + Linear Regression Theory |
+| `day_17_18_linear_regression.ipynb` | Linear Regression — Hands-on (Insurance Dataset) |
 
 
 ---
@@ -242,6 +244,44 @@ Practiced all Day 14 concepts with focused NumPy exercises and logical problems.
 
 ---
 
+### Day 16 — Introduction to ML + Linear Regression Theory
+Covered the full ML landscape and understood the math behind linear regression before touching any code.
+
+- What ML is — giving weightages (W) to input columns so the model can predict output; W is calculated by the model itself
+- Types of ML — Classical ML (structured data) vs Deep Learning (large/unstructured data)
+- Classical ML split — Supervised (labeled input + output) vs Unsupervised (only input, no labels)
+- Supervised tasks — Regression (numerical output e.g. house price) vs Classification (categorical output e.g. fraud/not fraud)
+- Unsupervised — clustering similar data points into groups (e.g. market segmentation)
+- Deep Learning — ANN (large data), CNN (images/videos), RNN (sequential data like stocks/books)
+- NLP — converts human language to machine-understandable format (used in GPT, Gemini)
+- Reinforcement Learning — agent gets reward for right action, punishment for wrong; used in self-driving cars and LLM training
+- Linear Regression — technique for prediction; finds the best fit line through data points
+- Best fit line — the line for which Mean Squared Error (MSE) is minimum; squared to eliminate negative errors
+- Finding m and c — done by taking derivative of MSE and setting it to 0 (minimization using calculus)
+- Gradient Descent — iterative method to minimize error when calculus approach isn't feasible on real messy data
+
+---
+
+### Day 17 & 18 — Linear Regression Hands-on (Insurance Dataset)
+Built a full linear regression pipeline on a real insurance dataset — from raw data to model evaluation.
+
+- Loaded `new_insurance_data.csv`, explored with `.head()`, `.info()`, `.describe()`, `.isnull().sum()`
+- Null handling — total nulls were ~3% of rows, so dropped them with `dropna(inplace=True)`
+- Outlier check — plotted boxplots for all numerical columns; kept all outliers as natural medical extremes
+- Multicollinearity — when two+ independent columns are highly correlated, model gets confused about feature importance
+- VIF (Variance Inflation Factor) — higher VIF = more correlated with other columns; VIF > 10 is bad; used `variance_inflation_factor` from `statsmodels`
+- Dropped columns iteratively based on VIF — removed `num_of_steps`, `Anual_Salary`, `NUmber_of_past_hospitalizations`, `bmi` until all VIF < 10
+- Label Encoding — converted categorical columns to numerical using `LabelEncoder` from `sklearn`; ML models only work with numbers
+- Train-Test Split — `train_test_split(x, y, test_size=0.2, random_state=0)`; 80% train, 20% test
+- Model building — `LinearRegression()` from `sklearn`, trained with `.fit(x_train, y_train)`
+- Prediction — `model.predict(x_test)`; compared actual vs predicted charges in a DataFrame
+- Evaluation — R² Score using `r2_score(y_test, y_pred)`
+- Key insight — removing multicollinearity doesn't always improve prediction accuracy (R²) but it does fix feature importance; with high VIF the `coef_` values are misleading
+- Visualized prediction vs actual using `sns.regplot()` with a regression line
+
+  
+---
+
 ## - Tools Used
 
 - **Python 3.12**
@@ -251,6 +291,8 @@ Practiced all Day 14 concepts with focused NumPy exercises and logical problems.
 - **Matplotlib** — for core plotting and charts
 - **Seaborn** — for advanced, cleaner visualizations built on Matplotlib
 - **Plotly** — for interactive 3D charts
-- **statistics** — (built-in) | For mean, median, mode, variance — sample-formula based calculations |
-- **scipy** For statistical tests — Z-test, T-test, ANOVA, Chi-Square, Shapiro-Wilk, Levene |
+- **statistics** — (built-in) | For mean, median, mode, variance — sample-formula based calculations 
+- **scipy** For statistical tests — Z-test, T-test, ANOVA, Chi-Square, Shapiro-Wilk, Levene 
+- **statsmodels** - For VIF (Variance Inflation Factor) to detect multicollinearity
+- **scikit-learn** - For Label Encoding, Train-Test Split, Linear Regression, and R² Score
 - **On Anaconda Navigator - jupyter notebook**
