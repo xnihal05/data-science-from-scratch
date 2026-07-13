@@ -1,7 +1,7 @@
-# Python Data Analysis — Learning Journey
+# Data Science from scratch — Learning Journey
 
-Hey! This repo is my personal learning log where I'm picking up Python for data analysis from scratch.  
-Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I go.
+Hey! This repo is my personal learning log where I'm picking up Python for data science from scratch.  
+Right now it covers **Pandas** and **NumPy** to **ml** — and I'll keep adding more as I go.
 
 ---
 
@@ -26,7 +26,8 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_15_handson_linear_algebra.ipynb` | Linear Algebra — Hands-on Practice |
 | `day_16_ml_linear_regression.ipynb` | Introduction to ML + Linear Regression Theory |
 | `day_17_18_linear_regression.ipynb` | Linear Regression — Hands-on (Insurance Dataset) |
-
+| `day_19_logistical_regression.ipynb` | Logistic Regression — Theory |
+| `day_20_21_logistical_handson.ipynb` | Logistic Regression — Hands-on (Bank Dataset) |
 
 ---
 
@@ -279,7 +280,33 @@ Built a full linear regression pipeline on a real insurance dataset — from raw
 - Key insight — removing multicollinearity doesn't always improve prediction accuracy (R²) but it does fix feature importance; with high VIF the `coef_` values are misleading
 - Visualized prediction vs actual using `sns.regplot()` with a regression line
 
-  
+---
+
+### Day 19 — Logistic Regression Theory
+Understood why linear regression fails for classification and how logistic regression solves it mathematically.
+
+- Why logistic regression — linear regression predicts continuous values; for categorical output (yes/no, spam/not spam) we need logistic regression
+- The core problem — fitting a straight line to binary data gives wrong predictions; outliers (e.g. 8 spam words but not spam) drag the line and shift the threshold
+- Log(Odds) — converting probability `p` to `log(p / 1-p)` makes the relationship between input and output linear; `p` = favourable, `1-p` = unfavourable
+- Sigmoid Function — converts any value to a range between 0 and 1; output above 0.5 → class 1, below 0.5 → class 0
+- Why not MSE for logistic regression — MSE gives a non-convex curve for binary output making gradient descent unreliable; we use Log Loss (Binary Cross Entropy) instead
+- Maximum Likelihood Estimation — find the line/weights that maximize the probability of observing the actual outcomes; take log of all probabilities and maximize their sum
+
+---
+
+### Day 20 — Logistic Regression Hands-on (Bank Marketing Dataset)
+Applied logistic regression on a real bank dataset to predict whether a customer subscribes to a term deposit.
+
+- Loaded `bank-additional-full.csv` with `sep=';'` — dataset was semicolon-separated, not comma
+- Target column `y` — will the customer subscribe to a term deposit? (yes/no)
+- Explored with `.head()`, `.info()`, `.describe()`, `.isnull().sum()`, `.duplicated().sum()`
+- Outlier check — looped through all numerical columns and plotted boxplots; kept outliers as they were naturally occurring (max age, max campaign contacts)
+- Dropped nulls and duplicates; Label Encoded all object columns using a loop with `LabelEncoder`
+- VIF check — built three custom functions: `vif()` to calculate VIF scores, `max_vif()` to find the highest VIF column, `remove_vif()` to drop it iteratively; ran until all VIF < 5
+- RFE (Recursive Feature Elimination) — new concept; trains the model internally, ranks features by importance, and removes the least important ones iteratively
+- Why RFE — shifts focus from quantity to quality, reduces overfitting, cuts computational cost, and removes noise features that confuse the model
+- Used `RFE(LogisticRegression(max_iter=1000))` with `rfe.fit(x, y)`; `rfe.support_` shows which features survived
+
 ---
 
 ## - Tools Used
