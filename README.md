@@ -294,7 +294,7 @@ Understood why linear regression fails for classification and how logistic regre
 
 ---
 
-### Day 20 — Logistic Regression Hands-on (Bank Marketing Dataset)
+### Day 20, 21 — Logistic Regression Hands-on (Bank Marketing Dataset)
 Applied logistic regression on a real bank dataset to predict whether a customer subscribes to a term deposit.
 
 - Loaded `bank-additional-full.csv` with `sep=';'` — dataset was semicolon-separated, not comma
@@ -306,6 +306,16 @@ Applied logistic regression on a real bank dataset to predict whether a customer
 - RFE (Recursive Feature Elimination) — new concept; trains the model internally, ranks features by importance, and removes the least important ones iteratively
 - Why RFE — shifts focus from quantity to quality, reduces overfitting, cuts computational cost, and removes noise features that confuse the model
 - Used `RFE(LogisticRegression(max_iter=1000))` with `rfe.fit(x, y)`; `rfe.support_` shows which features survived
+- Extracted RFE-selected features using `rfe.support_` — built index list of `True` values, pulled column names, created `data3` with only important features + target column `y`
+- Train-Test Split — `train_test_split(x, y)` with default 75/25 split
+- Trained `LogisticRegression()` with `.fit(x_train, y_train)`, predicted with `.predict(x_test)`
+- Confusion Matrix — TP, TN, FP, FN — what the model got right vs wrong and how dangerously wrong
+- Accuracy Score — correct/total; flawed on imbalanced data (if 90% samples are "no", model can score 90% by always predicting "no")
+- Precision — TP / (TP + FP); trustworthiness of positive predictions; blind to false negatives — can score 100% by predicting positive for only 1 sample
+- Recall — TP / (TP + FN); coverage of actual positives; blind to false alarms — can score 100% by predicting everything as positive
+- F1 Score — harmonic mean of precision and recall; punishes imbalance between the two hard; still ignores TN and assumes both matter equally
+- Key takeaway — no single metric tells the full story; pick metrics based on whether a false alarm or a missed case is more costly in your problem
+- Used `classification_report()` to get all metrics at once
 
 ---
 
